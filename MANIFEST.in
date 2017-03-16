@@ -1,0 +1,6 @@
+include setup.py setup.cfg README.md LICENCE.txt MANIFEST.in
+exclude *.pyc .* tox.ini
+recursive-include myzcat *.py
+recursive-exclude tests *.py
+recursive-exclude myzcat *.pyc
+recursive-exclude tests *.pyc
