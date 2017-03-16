@@ -1,10 +1,9 @@
 # -*- coding: utf-8 -*-
 from setuptools import setup, find_packages
-import os
-
+import myzcat
 setup(
     name='myzcat',
-    version='0.1.0',
+    version=myzcat.__version__,
     url='https://github.com/yoavram/myzcat',
     license='MIT',
     author='Yoav Ram',
