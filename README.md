@@ -1,6 +1,8 @@
 # myzcat
 ## An example Python project
 
+[![Build Status](https://travis-ci.org/yoavram/myzcat.svg?branch=master)](https://travis-ci.org/yoavram/myzcat)
+
 This is an example of a Python project.
 
 The structure of the project is:
