@@ -112,3 +112,7 @@ nosetests tests --with-coverage --cover-package=myzcat
 
 Additional tests should be added in the `tests` folder. 
 Follow the same format as in the existing files, only functions with names starting with `test` will be used as tests.
+
+## Logging
+
+See the [logging](https://github.com/yoavram/myzcat/tree/logging) branch.
