@@ -1,9 +1,17 @@
 # -*- coding: utf-8 -*-
 from setuptools import setup, find_packages
-import myzcat
+import os
+
+def get_version():
+    # See https://packaging.python.org/single_source_version/#single-sourcing-the-version
+    version = {}
+    with open(os.path.join("myzcat", "version.py")) as f:    
+        exec(f.read(), version)
+    return version['__version__']
+
 setup(
     name='myzcat',
-    version=myzcat.__version__,
+    version=get_version(),
     url='https://github.com/yoavram/myzcat',
     license='MIT',
     author='Yoav Ram',
