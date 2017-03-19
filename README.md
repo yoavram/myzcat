@@ -76,13 +76,13 @@ You can [download the code as a ZIP file](https://github.com/yoavram/myzcat/arch
 If you downloaded a ZIP file extract it and open a terminal window in the extracted folder.
 If you cloned the repository, open a terminal folder in the repository folder.
 
-Then run `pip install .` (with a dot at the end) to install the package, or `pip install . -e` to install it in developer mode. You can also do the same actions with `python setup.py install` and `python setup.py develop`, but then you must install dependencies on your own.
+Then run `pip install .` (with a dot at the end) to install the package, or `pip install -e .` to install it in developer mode. You can also do the same actions with `python setup.py install` and `python setup.py develop`, but then you must install dependencies on your own.
 
 You can also install directly from GitHub without downloading or cloning using `pip install git+https://github.com/yoavram/myzcat.git`.
 
 ## Developing
 
-When continuing development, it is best to install in developer/editing mode (`pip install . -e` or `python setup.py develop`) so that any changes in the source code are reflected when importing the package in Python.
+When continuing development, it is best to install in developer/editing mode (`pip install -e .` or `python setup.py develop`) so that any changes in the source code are reflected when importing the package in Python.
 
 ## Versioning
 
