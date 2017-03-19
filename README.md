@@ -107,7 +107,7 @@ nosetests tests
 
 If you want a test coverage report, run:
 ```
-nosetests tests --with-coverage --cover-package=myzcat
+nosetests tests --with-coverage --bycover-package=myzcat
 ```
 
 Additional tests should be added in the `tests` folder. 
@@ -115,4 +115,11 @@ Follow the same format as in the existing files, only functions with names start
 
 ## Logging
 
-See the [logging](https://github.com/yoavram/myzcat/tree/logging) branch.
+For a quick intro to logging and best practices, see [The Hitchhiker's Guide to Python](http://docs.python-guide.org/en/latest/writing/logging/). 
+
+Logging is done using the standard library module [`logging`](https://docs.python.org/3/howto/logging.html).
+
+Logging is configured in [`myzcat/__init__.py`](https://github.com/yoavram/myzcat/blob/logging/myzcat/__init__.py) (although it can also be configured in other ways, see the above link). 
+Current configuration is to log to a `myzcat.log` file located at the current working directory and to set the logging level to `INFO` unless the environment variable `MYZCAT_DEBUG` is set to `true` in which case the logging level will be set to `DEBUG`.
+
+Other parts of the app can log by simply importing the `logging` module and calling `logging.debug(message)`, where `debug` can be replaced by other logging levels and `message` is the message to be displayed. For examples, see [`myzcat/cli.py`](https://github.com/yoavram/myzcat/blob/logging/myzcat/cli.py).
