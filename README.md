@@ -9,6 +9,9 @@ The structure of the project is:
 
 ```
 .
+├── LICENCE.txt
+├── MANIFEST.in
+├── README.md
 ├── build
 │   ├── bdist.macosx-10.9-x86_64
 │   └── lib
@@ -26,7 +29,8 @@ The structure of the project is:
 ├── myzcat
 │   ├── __init__.py
 │   ├── cli.py
-│   └── gzip_reader.py
+│   ├── gzip_reader.py
+│   └── version.py
 ├── myzcat.egg-info
 │   ├── PKG-INFO
 │   ├── SOURCES.txt
@@ -44,7 +48,8 @@ The structure of the project is:
 - The package source code is contained in `myzcat`.
   - `gzip_reader.py` has a single function that given a filename, opens it, decompresses the gzip compression, and returns the content as a string.
   - `cli.py` leverages `gzip_reader.py` to create a CLI using [`click`](http://click.pocoo.org), which allows to view gzipped text files from the command line by calling `myzcat <filename>`.
-- The tests are in `tests` and can be run with `nose tests` after installing `nosetests` (`pip install nose`) or using `python setup.pt test`.
+  - `version.py` contains the version info in a single variable, `__version__`.
+- The tests are in `tests` and can be run with `nosetests tests` after installing `nose` or by calling `python setup.pt test`.
   - `__init__.py` defines utility functions for the tests
   - `test_gzip_reader.py` tests `gzip_reader.py`
   - `test_cli.py` tests `cli.py`
@@ -61,5 +66,49 @@ Additional `setup.py` tasks can be found in the [docs](https://packaging.python.
 
 - To install, you might need `setuptools`
 - To run, you will need `click`
-- To test, you'll need to install `nose` or `py.test`
-- To build a wheel file you will need `wheel`
+- To test, you'll need to install `nose`; for a test coverage report also install `coverage`
+- To build a wheel binary distribution, you will need `wheel`
+
+## Installing
+
+You can [download the code as a ZIP file](https://github.com/yoavram/myzcat/archive/master.zip) or clone it with git using `git clone https://github.com/yoavram/myzcat.git`. 
+
+If you downloaded a ZIP file extract it and open a terminal window in the extracted folder.
+If you cloned the repository, open a terminal folder in the repository folder.
+
+Then run `pip install .` (with a dot at the end) to install the package, or `pip install . -e` to install it in developer mode. You can also do the same actions with `python setup.py install` and `python setup.py develop`, but then you must install dependencies on your own.
+
+You can also install directly from GitHub without downloading or cloning using `pip install git+https://github.com/yoavram/myzcat.git`.
+
+## Developing
+
+When continuing development, it is best to install in developer/editing mode (`pip install . -e` or `python setup.py develop`) so that any changes in the source code are reflected when importing the package in Python.
+
+## Versioning
+
+The package version is set in `myzcat/version.py` and is imported in `__init__.py` to the package namespace. 
+
+From `setup.py`, the version is evaluated by reading `myzcat/version.py` and executing the code.
+
+For other methods of versioning Python packages, see the [packaging docs](https://packaging.python.org/single_source_version/#single-sourcing-the-version).
+
+## Packaging & Distributing
+
+To distribute the package, run `python setup.py sdist bdist_wheel` to create a source distribution (`sdist`) and a wheel binary distribution (`bdist_wheel)`); the latter requires the `wheel` package to be installed.
+
+To upload the package to [PyPI](http://pypi.python.org), register a username and password, install `twine`, then use `twine upload dist/*`.
+
+## Testing
+
+The easiest way to test the app is to call 
+```
+nosetests tests
+```
+
+If you want a test coverage report, run:
+```
+nosetests tests --with-coverage --cover-package=myzcat
+```
+
+Additional tests should be added in the `tests` folder. 
+Follow the same format as in the existing files, only functions with names starting with `test` will be used as tests.

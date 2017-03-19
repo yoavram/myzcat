@@ -3,7 +3,6 @@ from setuptools import setup, find_packages
 import os
 
 def get_version():
-    # See https://packaging.python.org/single_source_version/#single-sourcing-the-version
     version = {}
     with open(os.path.join("myzcat", "version.py")) as f:    
         exec(f.read(), version)
