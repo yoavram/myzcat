@@ -28,3 +28,8 @@ class CliTestCase(TestCase):
         result = runner.invoke(myzcat.cli.main, ['not_really_a_file.txt.gz'])
         self.assertNotEquals(result.exit_code, 0)
 
+    def test_file_not_gz(self):
+        runner = CliRunner()
+        result = runner.invoke(myzcat.cli.main, [__file__])
+        self.assertNotEquals(result.exit_code, 0)
+
