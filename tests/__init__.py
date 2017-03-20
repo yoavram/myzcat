@@ -1,19 +1,6 @@
 # -*- coding: utf-8 -*-
-import difflib
 import tempfile
 import gzip
-
-
-def diff(s1, s2):
-    """Compare two strings.
-
-    :param s1, s2: two strings to compare
-    :return: a string that represents the diff between the input strings
-    """
-    return ''.join(difflib.ndiff(
-        s1.splitlines(keepends=True),
-        s2.splitlines(keepends=True)
-    ))
 
 
 def temp_compress(filename):

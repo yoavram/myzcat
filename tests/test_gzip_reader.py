@@ -5,16 +5,17 @@ import tempfile
 from unittest import TestCase, main
 
 import myzcat
-from tests import diff, temp_compress
+from tests import temp_compress
 
 
 class GzipReaderTestCase(TestCase):
-    def setUp(self):
-        self.filename, self.string = temp_compress(__file__)
+	def setUp(self):
+		self.filename, self.string = temp_compress(__file__)
 
-    def tearDown(self):
-        os.remove(self.filename)
+	def tearDown(self):
+		os.remove(self.filename)
 
-    def test_read_gzip_file(self):
-        string = myzcat.read_gzip_file(self.filename)
-        assert self.string == string, diff(self.string, string)
+	def test_read_gzip_file(self):
+		self.maxDiff = None
+		string = myzcat.read_gzip_file(self.filename)
+		self.assertEquals(string, self.string)
