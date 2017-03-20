@@ -107,7 +107,7 @@ nosetests tests
 
 If you want a test coverage report, run:
 ```
-nosetests tests --with-coverage --bycover-package=myzcat
+nosetests tests --with-coverage --cover-package=myzcat
 ```
 
 Additional tests should be added in the `tests` folder. 
