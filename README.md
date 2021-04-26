@@ -13,7 +13,7 @@ The structure of the project is:
 ├── MANIFEST.in
 ├── README.md
 ├── build
-│   ├── bdist.macosx-10.9-x86_64
+│   ├── bdist.macosx-10.7-x86_64
 │   └── lib
 │       ├── myzcat
 │       │   ├── __init__.py
@@ -24,8 +24,8 @@ The structure of the project is:
 │           ├── test_cli.py
 │           └── test_gzip_reader.py
 ├── dist
-│   ├── myzcat-0.1.0-py3-none-any.whl
-│   └── myzcat-0.1.0.tar.gz
+│   ├── myzcat-0.1.2-py3-none-any.whl
+│   └── myzcat-0.1.2.tar.gz
 ├── myzcat
 │   ├── __init__.py
 │   ├── cli.py
@@ -97,6 +97,27 @@ For other methods of versioning Python packages, see the [packaging docs](https:
 To distribute the package, run `python setup.py sdist bdist_wheel` to create a source distribution (`sdist`) and a wheel binary distribution (`bdist_wheel)`); the latter requires the `wheel` package to be installed.
 
 To upload the package to [PyPI](http://pypi.python.org), register a username and password, install `twine`, then use `twine upload dist/*`.
+
+You can also setup your own repository (instead of using PyPI) with [pypiserver](https://pypi.org/project/pypiserver/).
+
+To install `pypi-server` and setup a local folder for the packages:
+```
+python -m pip install pypiserver  
+mkdir ~/mypypi   
+```
+To start the server without authentication on localhost with port 8080:
+```
+pypi-server -p 8080 -P . -a . ~/mypypi &
+```
+To upload the package with `twine`:
+```
+twine upload dist/* --repository-url http://localhost:8080
+```
+To install the package from the local repository:
+```
+python -m pip install -i http://localhost:8080/simple myzcat
+```
+
 
 ## Testing
 
